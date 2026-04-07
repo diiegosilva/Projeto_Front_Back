@@ -1,10 +1,7 @@
-export default function Home() {
+export default function EquipmentRegistration() {
   return (
     <div className="container mt-5">
-      <h1 className="label-custom mb-4">Cadastro de Equipamento</h1>
-
       <form>
-
         <div className="mb-3">
           <label className="form-label">Nome do equipamento</label>
           <input
@@ -57,7 +54,6 @@ export default function Home() {
         <button className="btn btn-success">
           Cadastrar
         </button>
-
       </form>
     </div>
   );
