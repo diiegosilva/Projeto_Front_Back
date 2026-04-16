@@ -1,4 +1,29 @@
+
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { URI } from '../enumerations/uri';
+
 export default function EquipamentTable(){
+
+  const [equipamento, setEquipamento] = useState([]);
+
+  useEffect(() => {
+    fetchEquipamento();
+  }, []);
+
+   const fetchEquipamento = async () => {
+    try {
+      let response;
+      response = await axios.get(`${URI.LISTAR_EQUIPAMENTOS}`);
+      setEquipamento(response.data); 
+      console.log(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
 return(
     <table className="table table-striped table-bordered">
 
@@ -14,25 +39,23 @@ return(
         </thead>
 
         <tbody>
-          <tr>
-            <td>Notebook</td>
-            <td>Dell</td>
-            <td>Inspiron</td>
-            <td>Notebook do setor administrativo</td>
-            <td>Ativo</td>
-
-            <td>
-              <button className="btn btn-success btn-sm me-2">
-                Cadastrar
-              </button>
-
-              <button className="btn btn-danger btn-sm">
-                Excluir
-              </button>
-            </td>
-
-          </tr>
-
+          {equipamento.map((item) => (
+            <tr key={item.id}>
+              <td>{item.name}</td>
+              <td>{item.mark}</td>
+              <td>{item.model}</td>
+              <td>{item.description}</td>
+              <td>{item.status ? 'Ativo' : 'Inativo'}</td>
+              <td>
+                <button className="btn btn-success btn-sm me-2">
+                  Cadastrar
+                </button>
+                <button className="btn btn-danger btn-sm">
+                  Excluir
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
 
       </table>
