@@ -2,9 +2,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { URI } from '../enumerations/uri';
+import { useNavigate } from 'react-router-dom';
 
-export default function EquipamentTable(){
-
+export default function EquipmentTable(){
+  const navigate = useNavigate();
   const [equipamento, setEquipamento] = useState([]);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function EquipamentTable(){
    const fetchEquipamento = async () => {
     try {
       let response;
-      response = await axios.get(`${URI.LISTAR_EQUIPAMENTOS}`);
+      response = await axios.get(`${URI.EQUIPAMENTO}`);
       setEquipamento(response.data); 
       console.log(response.data)
     } catch (error) {
@@ -22,7 +23,17 @@ export default function EquipamentTable(){
     }
   };
 
+  const remover = async (id) => {
+  try {
+    await axios.delete(`${URI.EQUIPAMENTO}/${id}`)
 
+    fetchEquipamento();
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao excluir");
+  }
+};
 
 return(
     <table className="table table-striped table-bordered">
@@ -47,10 +58,10 @@ return(
               <td>{item.description}</td>
               <td>{item.status ? 'Ativo' : 'Inativo'}</td>
               <td>
-                <button className="btn btn-success btn-sm me-2">
-                  Cadastrar
+                <button onClick={() => navigate(`/edit/${item.id}`)} className="btn btn-success btn-sm me-2">
+                  Editar
                 </button>
-                <button className="btn btn-danger btn-sm">
+                <button onClick={() => remover(item.id)} className="btn btn-danger btn-sm" >
                   Excluir
                 </button>
               </td>

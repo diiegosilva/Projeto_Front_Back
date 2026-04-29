@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import EquipamentTable from "../components/EquipamentTable";
-import EquipamentList from "../pages/EquipmentList/EquipamentList";
+import EquipmentRegister from "../pages/Equipment/EquipmentRegister";
+import EquipmentEdit from "../pages/Equipment/EquipmentEdit";
+import EquipmentList from "../pages/EquipmentList/EquipmentList";
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/listing" element={<EquipamentList/>}/>
+        <Route path="/" element={<EquipmentRegister/>}/>
+        <Route path="/edit/:id" element={<EquipmentEdit/>}/>
+        <Route path="/listing" element={<EquipmentList/>}/>
       </Routes>
     </BrowserRouter>
   );

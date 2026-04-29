@@ -5,7 +5,7 @@ export default function Header() {
   className="d-block text-center fw-bold fs-3 text-primary my-4 pb-2 border-bottom border-3"
   href="/"
 >
-  🖥 Cadastro de Equipamento
+  🖥 Equipamento
 </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
