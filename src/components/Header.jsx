@@ -1,16 +1,22 @@
 export default function Header() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <h2 class="navbar-brand" href="#">Cadastro de Equipamento</h2>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a 
+  className="d-block text-center fw-bold fs-3 text-primary my-4 pb-2 border-bottom border-3"
+  href="/"
+>
+  🖥 Equipamento
+</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/listing">Listing</a>
+        <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+              <a className="nav-item nav-link fw-bold fs-5 text-dark" href="/listing">
+                📋 Listing
+              </a>
             </div>
         </div>
     </nav>
   );
 }
-
